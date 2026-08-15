@@ -33,7 +33,7 @@ public class ReservaService {
         validator.verificarReserva(reserva, assento);
 
         try {
-            Thread.sleep(1000); // gap proposital para expor a janela de corrida
+            Thread.sleep(1000);
         }
         catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // restaura o status de interrupção
@@ -55,6 +55,7 @@ public class ReservaService {
 
         assento.setStatus(StatusAssento.RESERVADO);
 
+        reserva.setAssento(assento);
         reserva.setStatus(StatusReserva.CONFIRMADA);
         reservaRepository.save(reserva);
     }
@@ -67,6 +68,7 @@ public class ReservaService {
 
         assento.setStatus(StatusAssento.RESERVADO);
 
+        reserva.setAssento(assento);
         reserva.setStatus(StatusReserva.CONFIRMADA);
         reservaRepository.save(reserva);
     }
@@ -76,6 +78,8 @@ public class ReservaService {
     }
 
     public void deletar(Reserva reserva){
+        Assento assento = assentoRepository.findById(reserva.getAssento().getId()).orElseThrow(() -> new EntityNotFoundException("Assento não encontrado"));
+        assento.setStatus(StatusAssento.DISPONIVEL);
         reservaRepository.delete(reserva);
     }
 }

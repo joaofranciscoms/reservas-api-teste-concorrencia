@@ -20,14 +20,14 @@ public class Reserva {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "nomeCliente", length = 300, nullable = false)
+    @Column(name = "nomeCliente", length = 50, nullable = false)
     private String nomeCliente;
 
     @Column(name = "data_reserva")
     @CreatedDate
     private LocalDateTime dataReserva;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusReserva status;
 
