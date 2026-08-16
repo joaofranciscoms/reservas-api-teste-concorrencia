@@ -2,7 +2,7 @@
 
 API REST experimental criada para simular condições de corrida (Race Conditions), analisar cenários de Overbooking e demonstrar soluções práticas de concorrência utilizando Lock Otimista e Lock Pessimista no Spring Data JPA.
 
-## Sobre o Projeto
+## Sobre o Teste
 
 Em sistemas de alta demanda (como venda de ingressos de shows, reservas de passagens ou e-commerce durante a Black Friday), múltiplos usuários tentam comprar ou alterar o mesmo recurso no exato mesmo milissegundo.
 
