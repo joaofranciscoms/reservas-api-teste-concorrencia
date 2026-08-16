@@ -124,9 +124,9 @@ Resultados obtidos ao disparar uma bateria de **50 Usuários Virtuais simultâne
 
 | Estratégia | Trava Utilizada | Carga Simultânea | Reservas Gravadas no Banco | Status HTTP Retornados | Diagnóstico da Aplicação |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Sem Lock** | Nenhuma | 50 VUs | **20+ (Overbooking)** | `201 Created` (múltiplos) | **Falha de Integridade:** Leituras sujas paralelas permitiram reservas duplicadas. |
-| **Lock Otimista** | `@Version` | 50 VUs | **1 (Sucesso)** | `201 Created` (1x)<br>`409 Conflict` (colisões)<br>`422 Unprocessable` (regra) | **Sucesso:** As colisões exatas no commit dispararam 409 e o restante foi barrado por regra de negócio. |
-| **Lock Pessimista** | `FOR UPDATE` | 50 VUs | **1 (Sucesso)** | `201 Created` (1x)<br>`422 Unprocessable` (49x) | **Sucesso:** A trava de linha enfileirou as requisições e as demais caíram na validação de assento indisponível. |
+| **Sem Lock** | Nenhuma | 50 Threads | **20+ (Overbooking)** | `201 Created` (múltiplos) | **Falha de Integridade:** Leituras sujas paralelas permitiram reservas duplicadas. |
+| **Lock Otimista** | `@Version` | 50 Threads | **1 (Sucesso)** | `201 Created` (1x)<br>`409 Conflict` (colisões)<br>`422 Unprocessable` (regra) | **Sucesso:** As colisões exatas no commit dispararam 409 e o restante foi barrado por regra de negócio. |
+| **Lock Pessimista** | `FOR UPDATE` | 50 Threads | **1 (Sucesso)** | `201 Created` (1x)<br>`422 Unprocessable` (49x) | **Sucesso:** A trava de linha enfileirou as requisições e as demais caíram na validação de assento indisponível. |
 
 ---
 
