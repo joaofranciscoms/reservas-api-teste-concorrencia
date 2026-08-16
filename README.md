@@ -120,7 +120,7 @@ Também é possível acompanhar o resultado diretamente no banco de dados:
 
 ## Tabela Comparativa de Resultados (Benchmark)
 
-Resultados obtidos ao disparar uma bateria de **50 Usuários Virtuais simultâneos** no Postman Performance Test direcionados para o mesmo assento:
+Resultados obtidos ao disparar uma bateria de **50 Threads simultâneas** direcionadas para o mesmo assento:
 
 | Estratégia | Trava Utilizada | Carga Simultânea (Quantidade de Threads) | Reservas Gravadas no Banco | Status HTTP Retornados | Diagnóstico da Aplicação |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -129,38 +129,3 @@ Resultados obtidos ao disparar uma bateria de **50 Usuários Virtuais simultâne
 | **Lock Pessimista** | `FOR UPDATE` | 50 | **1 (Sucesso)** | `201 Created` (1x)<br>`422 Unprocessable` (49x) | **Sucesso:** A trava de linha enfileirou as requisições e as demais caíram na validação de assento indisponível. |
 
 ---
-
-## Semântica de Respostas HTTP
-
-A API adota respostas semânticas rigorosas em conformidade com o padrão REST:
-
-* **`201 Created`**: Reserva processada e confirmada com sucesso.
-* **`409 Conflict`**: Ocorreu uma colisão direta de gravação no banco de dados interceptada pelo Lock Otimista no mesmo instante.
-* **`422 Unprocessable Entity`**: A requisição possui sintaxe JSON correta, mas foi recusada por violação de regra de negócio (assento já reservado).
-
----
-
-## Endpoints da API voltados ao teste de Concorrência
-
-```Reserva```
-| Método | Url | 
-| :--- | :--- |
-| **POST** | /api/reservas/sem-lock |
-| **POST** | /api/reservas/lock-otimista | 
-| **POST** | /api/reservas/lock-pessimista | 
-
-## Demais Endpoints da API
-
-```Evento```
-| Método | Url | 
-| :--- | :--- |
-| **POST** | /api/eventos |
-| **GET** | /api/eventos/{id} | 
-| **DELETE** | /api/eventos/{id} |
-
-```Assento```
-| Método | Url | 
-| :--- | :--- |
-| **POST** | /api/assentos |
-| **GET** | /api/assentos/{id} | 
-| **DELETE** | /api/assentos/{id} | 
