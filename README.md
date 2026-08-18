@@ -59,7 +59,11 @@ git clone https://github.com/joaofranciscoms/reservas-api-concorrencia.git
 ```
  
 2. Crie um banco de dados no PostgreSQL chamado `reservations-platform`.
-3. Altere as credenciais de acesso no arquivo `src/main/resources/application.yml` somente se a senha padrão `postgres` do banco de dados tenha sido alterada:
+
+3. Abra o projeto na sua IDE e aguarde a instalação automática das dependências.
+  
+4. Altere as credenciais de acesso no arquivo `src/main/resources/application.yml` somente se o username e o password padrão `postgres` do banco de dados tenha sido alterada. Caso nenhuma alteração tenha sido feita deixe a parte do .yml que corresponde a esses campos inalterada. Dessa forma:
+
 ```yaml
 spring:
   datasource:
@@ -67,15 +71,13 @@ spring:
     username: postgres
     password: postgres
 ```
- 
-4. Abra o projeto na sua IDE e aguarde a instalação automática das dependências.
 ---
  
 ## Testando via JUnit (Sem Lock, Lock Otimista, Lock Pessimista)
  
 Com a aplicação já configurada (não é necessário estar rodando para este método, os testes sobem seu próprio contexto):
  
-1. Acesse a classe de testes, localizada no pacote `test`, logo abaixo do pacote `resources`.
+1. Acesse a classe de testes, localizada no diretório `test`, logo abaixo do diretório `resources`.
 ![Classe de testes](imagens/captura-classe-teste.png)
  
 2. Execute um dos métodos de teste conforme o cenário desejado: `semLock`, `lockOtimista` ou `lockPessimista`.
