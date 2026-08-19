@@ -59,7 +59,7 @@ Estes passos preparam o ambiente para rodar os testes (não é necessário subir
  
 1. Clone o repositório:
 ```
-git clone https://github.com/joaofranciscoms/reservas-api-concorrencia.git
+git clone https://github.com/joaofranciscoms/reservas-api-teste-concorrencia.git
 ```
  
 2. Crie um banco de dados no PostgreSQL chamado `reservations-platform`.
