@@ -75,6 +75,11 @@ spring:
     username: postgres
     password: postgres
 ```
+> **Por que as credenciais estão expostas?** As credenciais do banco de dados (`username`/`password`) aparecem expostas por padrão no `application.yml` de propósito. A ideia é que, após clonar o repositório, a API já suba pronta para uso, sem exigir configuração adicional de variáveis de ambiente — basta ter o PostgreSQL instalado com o banco `reservations-platform` criado.
+>
+> Todos esses valores são apenas defaults e podem ser sobrescritos.
+>
+> **Importante**: esses valores padrão servem apenas para ambiente local de desenvolvimento/testes. Em produção, é essencial sobrescrever essas variáveis com credenciais seguras, nunca utilizando os valores expostos aqui.
 ---
  
 ## Testando via JUnit (Sem Lock, Lock Otimista, Lock Pessimista)
