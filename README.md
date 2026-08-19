@@ -1,3 +1,7 @@
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+
 # Concorrencia - Spring Data JPA
  
 Aplicação Spring experimental criada para simular condições de corrida (Race Conditions), analisar cenários de Overbooking e demonstrar soluções práticas de concorrência utilizando Lock Otimista e Lock Pessimista no Spring Data JPA.
